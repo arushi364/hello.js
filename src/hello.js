@@ -375,7 +375,14 @@ hello.utils.extend(hello, {
 		}
 
 		// Convert state to a string
-		p.qs.state = encodeURIComponent(JSON.stringify(p.qs.state));
+		if (p.network == 'Yahoo')
+		{
+			p.qs.state = window.btoa(JSON.stringify(p.qs.state));
+		}
+		else
+		{
+			p.qs.state = encodeURIComponent(JSON.stringify(p.qs.state));
+		}
 
 		// URL
 		if (parseInt(provider.oauth.version, 10) === 1) {
